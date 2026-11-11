@@ -3,57 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gen Z Keyboard</title>
+    <title>Gen Z Gboard</title>
+    <!-- ডট ফন্টের জন্য Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="keyboard-container">
-        <!-- সাজেশন বার (এখানে Gen Z স্লাং দেখাবে) -->
-        <div class="suggestion-bar" id="suggestionBar">
-            <span>no cap</span>
-            <span>rizz</span>
-            <span>gyatt</span>
-            <span>skibidi</span>
-        </div>
+    <div class="app-wrapper">
+        <textarea id="typeBox" placeholder="Type here..." readonly></textarea>
 
-        <!-- ইনপুট প্রিভিউ বক্স -->
-        <input type="text" id="typeBox" placeholder="Type something, bestie..." />
+        <div class="keyboard-container">
+            <!-- টপ টুলবার -->
+            <div class="toolbar">
+                <span>•••</span>
+                <span>↶</span>
+                <span>↷</span>
+                <span>✎</span>
+                <span>📋</span>
+                <span>🎨</span>
+                <span>⇄</span>
+            </div>
 
-        <!-- কিবোর্ড লেআউট -->
-        <div class="keyboard-row">
-            <button class="key yellow">q</button>
-            <button class="key blue">w</button>
-            <button class="key dark">e</button>
-            <button class="key white">r</button>
-            <button class="key red">t</button>
-            <button class="key blue">y</button>
-            <button class="key white">u</button>
-            <button class="key red">i</button>
-            <button class="key yellow">o</button>
-            <button class="key dark">p</button>
-        </div>
-        <div class="keyboard-row">
-            <button class="key white">a</button>
-            <button class="key red">s</button>
-            <button class="key blue">d</button>
-            <button class="key white">f</button>
-            <button class="key yellow">g</button>
-            <button class="key white">h</button>
-            <button class="key red">j</button>
-            <button class="key blue">k</button>
-            <button class="key dark">l</button>
-        </div>
-        <div class="keyboard-row">
-            <button class="key yellow">⇧</button>
-            <button class="key dark">z</button>
-            <button class="key yellow">x</button>
-            <button class="key white">c</button>
-            <button class="key red">v</button>
-            <button class="key blue">b</button>
-            <button class="key dark">n</button>
-            <button class="key yellow">m</button>
-            <button class="key white">⌫</button>
+            <!-- ক্লিন সাজেশন বার (ছবির মতো) -->
+            <div class="suggestion-bar" id="suggestionBar">
+                <span class="arrow">⌃</span>
+                <div class="word">no cap</div>
+                <div class="divider">|</div>
+                <div class="word">rizz</div>
+                <div class="divider">|</div>
+                <div class="word">bet</div>
+                <span class="globe">🌐</span>
+            </div>
+
+            <!-- ১ম সারি -->
+            <div class="keyboard-row">
+                <button class="key yellow" data-key="q"><span class="hint">1</span>q</button>
+                <button class="key blue" data-key="w"><span class="hint">2</span>w</button>
+                <button class="key dark" data-key="e"><span class="hint">3</span>e</button>
+                <button class="key white" data-key="r"><span class="hint">4</span>r</button>
+                <button class="key red" data-key="t"><span class="hint">5</span>t</button>
+                <button class="key blue" data-key="y"><span class="hint">6</span>y</button>
+                <button class="key white" data-key="u"><span class="hint">7</span>u</button>
+                <button class="key red" data-key="i"><span class="hint">8</span>i</button>
+                <button class="key yellow" data-key="o"><span class="hint">9</span>o</button>
+                <button class="key dark" data-key="p"><span class="hint">0</span>p</button>
+            </div>
+
+            <!-- ২য় সারি -->
+            <div class="keyboard-row row-2">
+                <button class="key white" data-key="a"><span class="hint">@</span>a</button>
+                <button class="key red" data-key="s"><span class="hint">#</span>s</button>
+                <button class="key blue" data-key="d"><span class="hint">&</span>d</button>
+                <button class="key dark" data-key="f"><span class="hint">*</span>f</button>
+                <button class="key yellow" data-key="g"><span class="hint">-</span>g</button>
+                <button class="key white" data-key="h"><span class="hint">!</span>h</button>
+                <button class="key red" data-key="j"><span class="hint">?</span>j</button>
+                <button class="key blue" data-key="k"><span class="hint">(</span>k</button>
+                <button class="key dark" data-key="l"><span class="hint">)</span>l</button>
+            </div>
+
+            <!-- ৩য় সারি -->
+            <div class="keyboard-row">
+                <button class="key yellow wide" data-key="SHIFT">⌃</button>
+                <button class="key dark" data-key="z"><span class="hint">"</span>z</button>
+                <button class="key yellow" data-key="x"><span class="hint">'</span>x</button>
+                <button class="key white" data-key="c"><span class="hint">ç</span>c</button>
+                <button class="key red" data-key="v">v</button>
+                <button class="key blue" data-key="b">b</button>
+                <button class="key dark" data-key="n"><span class="hint">:</span>n</button>
+                <button class="key yellow" data-key="m"><span class="hint">/</span>m</button>
+                <button class="key white wide" data-key="BACK">⌫</button>
+            </div>
+
+            <!-- ৪র্থ সারি (স্পেসবার ও অন্যান্য) -->
+            <div class="keyboard-row">
+                <button class="key red wide-sm" data-key="123">?123</button>
+                <button class="key blue" data-key="EMOJI">☺</button>
+                <button class="key white" data-key=",">,</button>
+                <button class="key dark spacebar" data-key="SPACE"></button>
+                <button class="key dark" data-key=".">.</button>
+                <button class="key red wide-sm" data-key="ENTER">↵</button>
+            </div>
         </div>
     </div>
 
