@@ -1,24 +1,131 @@
-const typeBox = document.getElementById('typeBox');
-const keys = document.querySelectorAll('.key');
-const suggestions = document.querySelectorAll('#suggestionBar span');
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
 
-// কিবোর্ডের বাটনে ক্লিক করলে টাইপ হবে
-keys.forEach(key => {
-    key.addEventListener('click', () => {
-        const keyValue = key.textContent;
-        if (keyValue === '⌫') {
-            typeBox.value = typeBox.value.slice(0, -1);
-        } else if (keyValue === '⇧') {
-            // Shift ফিচার পরবর্তীতে যোগ করা যাবে
-        } else {
-            typeBox.value += keyValue;
-        }
-    });
-});
+body {
+    background-color: #121212;
+    font-family: 'Silkscreen', monospace; /* ডট/পিক্সেল ফন্ট */
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
 
-// স্লাং সাজেশনে ক্লিক করলে সরাসরি টাইপ বক্সে যুক্ত হবে
-suggestions.forEach(word => {
-    word.addEventListener('click', () => {
-        typeBox.value += (typeBox.value ? ' ' : '') + word.textContent + ' ';
-    });
-});
+.app-wrapper {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+#typeBox {
+    width: 92%;
+    margin: 20px auto;
+    height: 180px;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    color: #ffffff;
+    font-family: 'Silkscreen', monospace;
+    font-size: 18px;
+    padding: 15px;
+    resize: none;
+    outline: none;
+}
+
+.keyboard-container {
+    background-color: #000000;
+    padding: 6px 4px 12px 4px;
+    width: 100%;
+}
+
+/* টপ আইকন বার */
+.toolbar {
+    display: flex;
+    justify-content: space-around;
+    color: #cccccc;
+    padding: 6px 0 10px 0;
+    font-size: 16px;
+}
+
+/* ছবির মতো ক্লিন সাজেশন বার */
+.suggestion-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000000;
+    color: #e0dedc;
+    padding: 8px 12px;
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.suggestion-bar .word {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+.suggestion-bar .divider {
+    color: #333333;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 7px;
+    padding: 0 2px;
+}
+
+.row-2 {
+    padding: 0 18px;
+}
+
+.key {
+    position: relative;
+    flex: 1;
+    height: 54px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Silkscreen', monospace;
+    font-size: 19px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.05s;
+}
+
+.key:active {
+    transform: scale(0.94);
+    opacity: 0.85;
+}
+
+/* ডান কোণার ছোট সংখ্যা/চিহ্ন */
+.key .hint {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    font-size: 9px;
+    opacity: 0.7;
+    font-family: sans-serif;
+}
+
+/* বিশেষ বাটনের সাইজ */
+.key.wide { flex: 1.4; }
+.key.wide-sm { flex: 1.3; font-size: 14px; }
+.key.spacebar { flex: 4.2; }
+
+/* ছবির হুবহু কালার প্যালেট */
+.key.yellow { background-color: #e4bd4b; color: #111111; }
+.key.blue { background-color: #275383; color: #ffffff; }
+.key.red { background-color: #b73532; color: #ffffff; }
+.key.white { background-color: #e6e3df; color: #111111; }
+.key.dark { background-color: #1c1d21; color: #ffffff; }
+        
