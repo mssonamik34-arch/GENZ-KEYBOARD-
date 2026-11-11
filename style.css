@@ -1,77 +1,130 @@
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
 body {
-    background-color: #0d0d0d;
-    font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 100vh;
+    background-color: #121212;
+    font-family: 'Silkscreen', monospace; /* ডট/পিক্সেল ফন্ট */
     margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.app-wrapper {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+#typeBox {
+    width: 92%;
+    margin: 20px auto;
+    height: 180px;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    color: #ffffff;
+    font-family: 'Silkscreen', monospace;
+    font-size: 18px;
+    padding: 15px;
+    resize: none;
+    outline: none;
 }
 
 .keyboard-container {
     background-color: #000000;
-    padding: 12px;
-    border-radius: 20px 20px 0 0;
+    padding: 6px 4px 12px 4px;
     width: 100%;
-    max-width: 480px;
-    box-shadow: 0 -5px 20px rgba(0,0,0,0.8);
 }
 
-.suggestion-bar {
+/* টপ আইকন বার */
+.toolbar {
     display: flex;
     justify-content: space-around;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    font-weight: bold;
+    color: #cccccc;
+    padding: 6px 0 10px 0;
+    font-size: 16px;
 }
 
-.suggestion-bar span {
-    background: #333;
-    padding: 5px 12px;
-    border-radius: 15px;
+/* ছবির মতো ক্লিন সাজেশন বার */
+.suggestion-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000000;
+    color: #e0dedc;
+    padding: 8px 12px;
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.suggestion-bar .word {
+    flex: 1;
+    text-align: center;
     cursor: pointer;
 }
 
-#typeBox {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 12px;
-    background-color: #1e1e1e;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-size: 16px;
-    box-sizing: border-box;
+.suggestion-bar .divider {
+    color: #333333;
 }
 
 .keyboard-row {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 7px;
+    padding: 0 2px;
+}
+
+.row-2 {
+    padding: 0 18px;
 }
 
 .key {
+    position: relative;
     flex: 1;
-    margin: 3px;
-    height: 52px;
+    height: 54px;
     border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 18px;
+    border-radius: 8px;
+    font-family: 'Silkscreen', monospace;
+    font-size: 19px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.4);
+    transition: transform 0.05s;
 }
 
-.key.yellow { background-color: #e5c158; color: #000; }
-.key.blue { background-color: #265c8a; }
-.key.red { background-color: #b83b3b; }
-.key.white { background-color: #e0dedc; color: #000; }
-.key.dark { background-color: #1a1a1a; color: #fff; }
+.key:active {
+    transform: scale(0.94);
+    opacity: 0.85;
+}
+
+/* ডান কোণার ছোট সংখ্যা/চিহ্ন */
+.key .hint {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    font-size: 9px;
+    opacity: 0.7;
+    font-family: sans-serif;
+}
+
+/* বিশেষ বাটনের সাইজ */
+.key.wide { flex: 1.4; }
+.key.wide-sm { flex: 1.3; font-size: 14px; }
+.key.spacebar { flex: 4.2; }
+
+/* ছবির হুবহু কালার প্যালেট */
+.key.yellow { background-color: #e4bd4b; color: #111111; }
+.key.blue { background-color: #275383; color: #ffffff; }
+.key.red { background-color: #b73532; color: #ffffff; }
+.key.white { background-color: #e6e3df; color: #111111; }
+.key.dark { background-color: #1c1d21; color: #ffffff; }
